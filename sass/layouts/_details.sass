@@ -1,0 +1,93 @@
+.cont
+	margin: 0 auto
+	margin-bottom: 6rem
+	+responsive($sm)
+		width: 100%
+	+responsive($md)
+		width: 90%
+	+responsive($from-lg)
+		width: 80%
+	+responsive($wd)
+		width: 70%
+.cont-title
+	font-size: 18px
+	margin-bottom: 1.5rem
+	+responsive($from-lg)
+		font-size: 1.5rem
+.cont-para
+	font-size: 1rem
+	line-height: 1.5
+	&[lang="ko"]
+	font-size: 0.9333333333rem
+	margin-bottom: 1.5rem
+	line-height: 1.8
+.cont-img
+	width: 100%
+	margin: 0.75rem 0
+	&:last-child
+		margin-bottom: 3rem
+
+.list-container
+	@extend %clearfix
+	width: 100%
+
+.cont-list-1
+	width: 100%
+	padding: 0 1rem
+	+responsive($from-md)
+		float: left
+		width: 50%
+		margin-bottom: 2rem
+	margin-bottom: 1.5rem
+.cont-list-2
+	width: 100%
+	padding: 0 1rem
+	margin-bottom: 2rem
+	+responsive($from-md)
+		float: left
+		width: 33%
+		margin-bottom: 1.5rem
+
+.details
+	h5
+		font-size: 0.9333333333rem
+		margin-bottom: 1rem
+	ul
+		@extend %reset-list
+	li
+		margin-bottom: 0.3rem
+		font-size: 0.9333333333rem
+		color: rgba($body-text-color, 0.75)
+		+responsive($from-md)
+			margin-bottom: 0.75rem
+
+.sub
+	margin-top: 3rem
+
+.figures
+	margin-top: 4.5rem
+	figure
+		margin-bottom: 0.75rem
+		&.resp-figure
+			width: 100%
+			+responsive($wd)
+				width: 80%
+				margin:
+					left: auto
+					right: auto
+	figcaption
+		visibility: hidden
+
+.gallery
+	img
+		width: 100%
+		height: auto
+	+responsive($md)
+		column-count: 2
+		column-gap: 1rem
+	+responsive($from-lg)
+		column-count: 3
+		column-gap: 1rem
+
+	
+

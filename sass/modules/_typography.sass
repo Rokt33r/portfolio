@@ -1,0 +1,109 @@
+@import "../config/configs.sass"
+
+@function get-font-size($ty-scale, $count, $fz-base: $font-size-base)
+	$font-size: $fz-base
+	@for $i from 1 through $count
+		$font-size: $font-size * $ty-scale
+	@return $font-size
+
+@function get-line-height($font-size, $lh-base: $line-height-base, $fz-base: $font-size-base)
+	@if unitless($lh-base)
+		$lh-base: $lh-base * $fz-base
+	@return ceil($font-size/$lh-base) * ($lh-base/$font-size)
+
+
+=vertical-rhythm($count, $mr-num: true, $ty-scale: $type-scale, $fz-base: $font-size-base, $lh-base: $line-height-base)
+	font-size: get-font-size($ty-scale, $count, $fz-base)
+	line-height: get-line-height(get-font-size($ty-scale, $count, $fz-base), $lh-base, $fz-base)
+	@if $mr-num == true
+		margin-#{$text-margin-direction}: $line-height-base * $font-size-base
+	@else if type-of($mr-num) == number
+		margin-#{$text-margin-direction}: $mr-num * $line-height-base * $font-size-base
+
+=margin-rhythm($num: 1)
+	margin-#{$text-margin-direction}: $num * $line-height-base * $font-size-base
+
+%text-default
+	font:
+		family: $font-family-base
+		size: $font-size-base
+		weight: $font-weight-base
+	line-height: $line-height-base
+	color: $body-text-color
+
+=highlighted($hl-color: $highlighted-text-color, $hl-bg-color: $highlighted-bg-color, $padding: .2em)
+	padding: $padding
+	color: $hl-color
+	background-color: $hl-bg-color
+
+=superscript($ratio: .85em, $align: top)
+	font-size: $ratio
+	vertical-align: $align
+
+=subscript($ratio: .85em, $align: bottom)
+	font-size: $ratio
+	vertical-align: $align
+
+=inline-code($code-ff: $code-font-family, $code-txt-color: $code-text-color, $code-bg-color: $code-bg-color)
+	padding: .15873015873em .317460317em
+	border-radius: 4px
+	font:
+		family: $code-ff
+		size: .9em
+	line-height: inherit
+	color: $code-txt-color
+	background-color: $code-bg-color
+
+=reset-anchor($a-color: $anchor-text-color, $td: none, $font-family: inherit)
+	font-famliy: $font-family
+	color: $a-color
+	text-decoration: $td
+
+=hover-opacity($before: 1, $after: .5)
+	opacity: $before
+	+transition
+	&:hover
+		opacity: $after
+
+=hover-line($direction, $color, $size: 1px, $padding: 0, $transition: all .2s ease-in)
+	position: relative
+	display: inline-block
+	padding: set-space($padding)
+	vertical-align: middle
+	overflow: hidden
+	&:before, &::before
+		content: ''
+		position: absolute
+		height: $size
+		bottom: 0
+		background-color: $color
+		transition: $transition
+		@content
+	@if $direction == "to left"
+		&:before, &::before
+			left: 100%
+			right: 0
+		&:hover
+			&:before, &::before
+				left: 0
+	@else if $direction == "to right"
+		&:before, &::before
+			left: 0
+			right: 100%
+		&:hover
+			&:before, &::before
+				right: 0
+	@else if $direction == "from center"
+		&:before, &::before
+			left: 50%
+			right: 50%
+		&:hover
+			&:before, &::before
+				left: 0
+				right: 0
+
+=abbr
+	cursor: help
+
+
+

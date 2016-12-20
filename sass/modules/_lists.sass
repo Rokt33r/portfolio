@@ -1,0 +1,28 @@
+@import "../config/configs.sass"
+
+%reset-list
+	list-style-type: none
+	padding: 0
+
+=horizontal-list($list-padding, $list-margin, $mr-direction: right)
+	float: left
+	@if $list-padding == 0
+		padding: null
+	padding: $list-padding
+	margin-#{$mr-direction}: $list-margin
+	@if $mr-direction == right
+		&:last-child
+			margin-right: 0
+	@else if $mr-direction == left
+		&:first-child
+			margin-left: 0
+
+=vertical-list($line-height, $margin, $mr-direction: bottom, $mr-clear: true)
+	line-height: $line-height
+	+get-list-value-suffix(margin, $mr-direction $margin)
+	@if $mr-clear == true and $mr-direction == top
+		&:first-child
+			margin-top: 0
+	@else if $mr-clear == true and $mr-direction == bottom
+		&:last-child
+			margin-bottom: 0

@@ -1,0 +1,46 @@
+@import "../config/configs.sass"
+
+=responsive($vp-size)
+	@if type-of($vp-size) == number
+		@media screen and (min-width: $vp-size + 1px)
+			@content
+	@if type-of($vp-size) == list and length($vp-size) == 2
+		@media screen and (min-width: nth($vp-size, 1) + 1px) and (max-width: nth($vp-size, 2))
+			@content
+
+=fluid-col($num: 1, $col: 12, $gutter: null, $float: false)
+	@if $float == true
+		float: left
+	width: percentage($num/$col)
+	padding:
+		left: $gutter
+		right: $gutter
+
+=static-col($vp, $num: 1, $col-w: 0, $gut: 0, $float: false)
+	@if $vp == lg
+		$col-w: $lg-col-width
+		$gut: $lg-gutter
+	@else if $vp == md
+		$col-w: $md-col-width
+		$gut: $md-gutter
+	@else if $vp == global
+		$col-w: $col-width
+		$gut: $gutter
+	@if $float == true
+		float: left
+	width: get-width($col-w, $num, $gut)
+	@if $gut != 0
+		margin:
+			left: $gut
+			right: $gut
+
+=container($vp, $page-width: 0, $margin: false)
+	@if $vp == lg
+		$page-width: $lg-page-width
+	@else if $vp == md
+		$page-width: $md-page-width
+	width: $page-width
+	@if $margin == true
+		margin:
+			left: auto
+			right: auto

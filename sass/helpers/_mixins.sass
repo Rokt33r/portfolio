@@ -1,0 +1,73 @@
+@import _functions.sass
+
+=get-list-value-prefix($property, $list)
+	#{nth($list, 1)}-#{$property}: nth($list, 2)
+=get-list-value-suffix($property, $list)
+	#{$property}-#{nth($list, 1)}: nth($list, 2)
+
+=dimension($width: 100%, $height: auto, $padding: null, $margin: null)
+	@if type-of($width) == list
+		+get-list-value-prefix(width, $width)
+	@else
+		width: $width
+	@if type-of($height) == list
+		+get-list-value-prefix(height, $height)
+	@else
+		height: $height
+	padding: $padding
+	margin: $margin
+
+=position-center
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+
+=position-center-mr($width, $height: $width)
+	position: absolute
+	top: 50%
+	left: 50%
+	margin:
+		top: -($width/2)
+		left: -($height/2)
+
+=position-center-X
+	position: absolute
+	left: 50%
+	transform: translateX(-50%)
+
+=position-center-X-mr($width)
+	position: absolute
+	left: 50%
+	margin-left: -($width/2)
+
+=position-center-Y
+	position: absolute
+	top: 50%
+	transform: translateY(-50%)
+
+=position-center-Y-mr($height)
+	position: absolute
+	top: 50%
+	margin-top: -($height/2)
+
+=border-radius($radius: 0, $label: false, $point-edge: false)
+	@if not $label and not $point-edge
+		border-radius: $radius
+	@else if $label == left and not $point-edge
+		border-radius: $radius 0 0 $radius
+	@else if $label == right and not $point-edge
+		border-radius: 0 $radius $radius 0
+	@else if  type-of($point-edge) == string and not $label 
+		border-#{$point-edge}-radius: $radius
+	@else if type-of($point-edge) == list and not $label
+		@for $i from 1 through length($point-edge)
+			border-#{nth($point-edge, $i)}-radius: $radius
+	@else if type-of($point-edge) == map and not $label
+		@each $point, $radius in $point-edge
+			border-#{$point}-radius: $radius
+
+=transition($transition: all .2s ease-in)
+	transition: $transition
+
+

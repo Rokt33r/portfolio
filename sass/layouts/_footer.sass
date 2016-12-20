@@ -1,0 +1,28 @@
+footer
+	@extend %clearfix
+	width: 100%
+	line-height: 1.5rem
+	background-color: rgba($white, 0.75)
+.outer-links
+	font-size: 1rem
+	margin-bottom: 0.75rem
+	+responsive($from-md)
+		float: left
+		line-height: 6rem
+		margin-bottom: 0
+	a
+		&:first-child
+			margin-right: 1rem
+	+responsive($from-md)
+		a
+			&:first-child
+				margin-right: 2rem
+
+.mail
+	display: inline-block
+	padding-bottom: 1.5rem
+	+responsive($from-md)
+		float: right
+		line-height: 4.5rem
+		padding-bottom: 0
+

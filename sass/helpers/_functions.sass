@@ -1,0 +1,33 @@
+@function strip-units($number)
+	@if type-of($number) == number and not unitless($number)
+		@return $number / ($number * 0 + 1)
+	@return $number
+
+@function px-to-rem($number)
+	$number: strip-units($number)
+	@return $number * 1rem
+
+@function get-ratio($target, $context)
+	@return percentage($target / $context)
+
+@function get-width($col-width, $num: 1, $gutter: 0)
+	@return ($col-width * $num) + ($gutter * 2) * ($num - 1)
+
+@function set-space($space)
+	@if type-of($space) == number
+		@return $space
+	@else if type-of($space) == string
+		@return $space
+	@else if type-of($space) == list and length($space) == 2
+		@return #{nth($space, 1) nth($space, 2)}
+
+@function get-font-size($ty-scale, $count, $fz-base: $font-size-base)
+	$font-size: $fz-base
+	@for $i from 1 through $count
+		$font-size: $font-size * $ty-scale
+	@return $font-size
+
+@function get-line-height($font-size, $lh-base: $line-height-base, $fz-base: $font-size-base)
+	@if unitless($lh-base)
+		$lh-base: $lh-base * $fz-base
+	@return ceil($font-size/$lh-base) * ($lh-base/$font-size)

@@ -1,0 +1,66 @@
+.works
+	margin: 0 auto
+	margin-bottom: 8rem
+	+responsive($sm)
+		width: 100%
+		margin-bottom: 4.5rem
+		font-size: 1.5rem
+	+responsive($md)
+		width: 90%
+		font-size: 1.8rem
+	+responsive($lg)
+		width: 80%
+		font-size: 2rem
+
+	h2
+		font:
+			size: 1.5rem
+			weight: normal
+		color: $dark-gray
+		margin-bottom: 1.5rem
+		+responsive($sm)
+			font-size: 18px
+			margin-bottom: 1rem
+
+.work-list
+	@extend %reset-list
+	li
+		border-bottom: 1px solid $light-gray
+	.hit
+		@extend %clearfix
+		+transition
+		position: relative
+		&:hover
+			opacity: 0.5
+
+
+.work-headline
+	font-size: 1.5rem
+	line-height: 120px
+	height: 120px
+	+responsive($sm)
+		line-height: 100px
+		height: 100px
+		font-size: 18px
+	+responsive($from-md)
+		float: left
+		width: 41%
+	+responsive($wd)
+		width: 350px
+
+.work-description
+	position: relative
+	font-size: 1rem
+	width: 100%
+	height: 120px
+	+responsive($sm)
+		display: none
+	+responsive($from-md)
+		float: left
+		width: 58%
+	+responsive($wd)
+		width: 739px
+	p
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)

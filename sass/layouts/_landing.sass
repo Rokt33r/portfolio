@@ -1,0 +1,30 @@
+.landing
+	position: relative
+	width: 100%
+	height: 100vh
+	.details &
+		height: 65vh
+
+.ld-title
+	+transition
+	position: absolute
+	top: 50%
+	left: 50%
+	transform: translate(-50%, -50%)
+	margin: 0 auto
+	letter-spacing: -0.02em
+	line-height: 1.34
+	&:hover
+		opacity: 0.75
+	+responsive($sm)
+		width: 100%
+		font-size: 2.4rem
+	+responsive($md)
+		width: 90%
+		font-size: 3rem
+	+responsive($from-lg)
+		width: 80%
+		font-size: 3.2rem
+		letter-spacing: -0.03em
+	+responsive($wd)
+		width: 70%

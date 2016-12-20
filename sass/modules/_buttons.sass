@@ -1,0 +1,66 @@
+@import "../config/configs.sass"
+
+// Global Variables for Buttons
+$default-border-color: #E0E6ED
+$default-text-color: #3C4858
+//  Buttons Default Settings
+%button
+	display: inline-block
+	padding: .6429em 1.5em
+	border: none
+	outline: none
+	font-size: 1em
+	line-height: 1em
+	cursor: pointer
+
+// Flat 
+=flat-button($bg-color, $color: #fff)
+	@extend %button
+	color: $color
+	background-color: $bg-color
+
+=outlined-button($color, $size: 1px, $bg-color: #fff)
+	@extend %button
+	box-shadow: inset 0 0 0 $size $color
+	color: $color
+	background-color: $bg-color
+
+=ghost-button
+	@extend %button
+	border: 1px solid $default-border-color
+	color: $default-text-color
+	background-color: transparent
+
+// Button Hover Effext
+=hover-darken($color, $hover-level: 10%, $active-level: 15%, $transition)
+	+transition($transition)
+	&:hover
+		background-color: darken($color, $hover-level)
+	&:active
+		background-color: darken($color, $active-level)
+
+=hover-fill($color, $txt-color: null)
+	+transition($transition)
+	&:hover
+		background-color: $color
+		color: $txt-color
+
+=hover-raised($color: rgba(31,45,61,.1), $flat: false, $transition)
+	+transition($transition)
+	&:hover
+		box-shadow: 0 1px 2px 0 $color
+	@if $flat
+		&:hover
+		box-shadow: 0 2px 2px 0 $color
+	&:active
+		box-shadow: inset 0 1px 1px 0 $color
+	@if $flat
+		&:active
+		box-shadow: inset 0 2px 2px 0 $color
+
+=hover-emboss($color, $level: 10%, $transition)
+	+transition($transition)
+	&:hover
+		box-shadow: inset 0 -2px 0 darken($color, $level)
+	&:active
+		box-shadow: inset 0 2px 0 darken($color, $level)

@@ -126,17 +126,20 @@ footer {
   font-size: 1rem;
   margin-bottom: 0.75rem;
 }
-  @media screen and (min-width: 651px) {
-    .outer-links {
-      float: left;
-      line-height: 6rem;
-      margin-bottom: 0; }
+@media screen and (min-width: 651px) {
+  .outer-links {
+    float: left;
+    line-height: 6rem;
+    margin-bottom: 0; }
   }
-  @media screen and (min-width: 651px) {
-    .outer-links a:first-child {
-      margin-right: 2rem; } }
+@media screen and (min-width: 651px) {
+  .outer-links a:first-child {
+    margin-right: 2rem;
+  }
+}
 .outer-links a:first-child {
-    margin-right: 1rem; }
+  margin-right: 1rem;
+}
 
 .mail {
   display: inline-block;

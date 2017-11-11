@@ -1,0 +1,132 @@
+// sizing
+
+=m($m: 0)
+  margin: $m
+
+=mr($m: 0)
+  margin-right: $m
+
+=ml($m: 0)
+  margin-left: $m
+
+=mt($m: 0)
+  margin-top: $m
+
+=mb($m: 0)
+  margin-bottom: $m
+
+=p($p: 0)
+  padding: $p
+
+=pr($p: 0)
+  padding-right: $p
+
+=pl($p: 0)
+  padding-left: $p
+
+=pt($p: 0)
+  padding-top: $p
+
+=pb($m: 0)
+  padding-bottom: $p
+
+
+// width
+
+=w($w: 100%)
+  width: $w
+
+=max-w($w)
+  max-width: $w
+
+=min-w($w)
+  min-width: $w
+
+=h($h: auto)
+  height: $h
+
+=max-h($h)
+  max-height: $h
+
+=min-h($h)
+  min-height: $h
+
+=ratio($w: 100%)
+  +w($w)
+  +h()
+
+=pos($t: static)
+  position: $t
+
+=rel()
+  +pos(relative)
+
+=abs()
+  +pos(absolute)
+
+=t($t: 0)
+  top: $t
+
+=b($b: 0)
+  bottom: $b
+
+=l($l: 0)
+  left: $l
+
+=r($r: 0)
+  right: $r
+
+// Flexbox
+=flex($dir: row)
+  display: flex
+  flex-direction: $dir
+
+=wrap($w: wrap)
+  flex-wrap: $w
+
+=jc($t: center)
+  justify-content: $t
+
+=ai($t: center)
+  align-items: $t
+
+=ac($t: center)
+  align-content: $t
+
+
+// responsive
+=underMb($px: $mb)
+  @media screen and (max-width: $px)
+    @content
+
+=underTb($px: $tb)
+  @media screen and (max-width: $px)
+    @content
+
+=underDk($px: $dk)
+  @media screen and (max-width: $px)
+    @content
+
+=underWd($px: $wd)
+  @media screen and (max-width: $px)
+    @content
+
+=overMb($px: $mb)
+  @media screen and (min-width: $px + 1)
+    @content
+
+=overTb($px: $tb)
+  @media screen and (min-width: $px + 1)
+    @content
+
+=overDk($px: $dk)
+  @media screen and (min-width: $px + 1)
+    @content
+
+=overWd($px: $wd)
+  @media screen and (min-width: $px + 1)
+    @content
+
+
+=col($c: 12)
+  +w(percentage($c/12))

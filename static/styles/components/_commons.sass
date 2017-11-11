@@ -1,0 +1,17 @@
+html
+  font-size: $body
+  line-height: $lh
+  color: $bodyColor
+
+*
+  +m()
+  box-sizing: border-box
+  font-family: $times
+
+.sr-only
+  @extend %sr-only
+
+ul,
+ol
+  +pl()
+  list-style-type: none

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "keywords": [],
   "author": "Jiseung Roh <jiseung.roh@gmail.com> (http://rohjs.github.io/)",
@@ -19,6 +20,8 @@
   },
   "devDependencies": {
     "babel-plugin-inline-react-svg": "^0.4.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "gulp": "^3.9.1",
     "gulp-sass": "^3.1.0"
   }

@@ -1,7 +1,5 @@
 {
-  "presets": [
-    "react"
-  ],
+  "presets": ["next/babel", "stage-2"],
   "plugins": [
     "babel-plugin-inline-react-svg"
   ]

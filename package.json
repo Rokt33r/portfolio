@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "next": "next",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -18,9 +22,17 @@
   },
   "homepage": "https://github.com/rohjs/portfolio#readme",
   "dependencies": {
+    "frontmatter": "0.0.3",
+    "js-yaml": "^3.10.0",
     "next": "^4.2.3",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "rehype-highlight": "^2.1.0",
+    "rehype-raw": "^2.0.0",
+    "rehype-stringify": "^3.0.0",
+    "remark-parse": "^5.0.0",
+    "remark-rehype": "^3.0.0",
+    "unified": "^6.1.6"
   },
   "devDependencies": {
     "express": "^4.16.2",

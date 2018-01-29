@@ -4,6 +4,7 @@ title: Marco
 date: 2016-12-01 12:00:00 +0900
 tags: [UX Design, User research, UI design,]
 brief: 해외 개별 여행자들의 동행 플랫폼
+id: marco
 ---
 
 # Marco

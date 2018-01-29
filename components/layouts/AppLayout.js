@@ -3,7 +3,17 @@ import Link from 'next/link'
 
 const AppLayout = (props) => (
   <div className='wrap'>
-    hihihi
+    <header className='header'>
+      <Link href='/'>
+        <a>
+          <img
+            class='logo'
+            src='/static/images/logo-woohyeon.svg'
+            alt='우현'
+          />
+        </a>
+      </Link>
+    </header>
     { props.children }
     <style jsx global>{`
       * { 
@@ -31,6 +41,29 @@ const AppLayout = (props) => (
       a:hover {
         text-decoration: underline;
         opacity: .8;
+      }
+    `}</style>
+    <style jsx>{`
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 72px;
+        background-color: rgba(255, 255, 255, .95)
+      }
+
+      .header a {
+        height: 22px;
+      }
+
+      .logo {
+        width: 88px;
+        height: 22px;
       }
     `}</style>
   </div>

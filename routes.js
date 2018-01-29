@@ -1,12 +1,16 @@
-import worksPathMap from './static/generated/works.json'
+const worksData = require('./static/generated/works.json')
+
+const worksPathMap = worksData.reduce((acc, work) => {
+  acc[`/works/${work.id}`] = {
+    pages: '/works/show',
+    query: { id: work.id },
+  }
+  return acc
+}, {})
 
 module.exports = () => {
   return {
     '/': { pages: '/' },
-    '/404': { pages: '/404' },
-    '/works': worksPathMap.reduce((acc, work) => {
-      acc[`/work/${work.id}`] = { pages: `/work/show/${work.id}` }
-      return acc
-    }, {})
+    ...worksPathMap,
   }
 }

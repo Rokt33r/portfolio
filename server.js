@@ -3,7 +3,7 @@ const next = require('next')
 const parse = { url }
 
 const dev = process.env.NODE_ENV !== 'production'
-const PORT = process.env.PORT ||8080
+export const PORT = process.env.PORT ||8080
 
 const app = next({
   dir: '.',
@@ -16,17 +16,14 @@ const getRoutes = require('./routes')
 app.prepare()
   .then(() => {
     const server = express()
-    server.get('*', (req, res) => {
-      const parsedUrl = parse(req.url, true)
-      const {
-        pathname,
-        query = {}
-      } = parsedUrl
-      const route = routes[pathname]
 
-      if (route) {
-        return app.render(req, res, route.page, route.query)
-      }
+    server.get('/works/:id', (req, res) => {
+      const actualPage = '/works/show'
+      const queryParams = { id: req.params.id }
+      app.render(req, res, actualPage, queryParams)
+    })
+
+    server.get('*', (req, res) => {
       return handle(req, res)
     })
 
@@ -34,4 +31,8 @@ app.prepare()
       if (err) throw err
       console.log(`> Ready on http://localhost:${PORT}`)
     })
+  })
+  .catch(ex => {
+    console.error(ex.stack)
+    process.exit(1)
   })
